@@ -17,7 +17,7 @@ Vous aurez besoin de télécharger 3 fichiers de données pour le tutoriel dans 
 - gryphonped.csv : données sur le pedigree associé à la base de données griffon. 
 
 De plus, certains des modèles présentés dans les tutoriels peuvent prendre un certain temps à s'exécuter (parfois > 1 heure), c'est pourquoi nous fournissons également les sorties des modèles pour vous permettre de poursuivre le tutoriel sans attendre que le modèle s'exécute. (Mais vous êtes libre d'exécuter les modèles, et nous l’encourageons pour votre propre apprentissage).
-Les fichiers sont disponibles [ici](https://github.com/JulienGAMartin/wam_tuto/tree/master/data)
+Les fichiers sont disponibles [ici](99_data.qmd)
 Je recommande de sauvegarder les fichiers data et Rdata dans un sous-dossier `data` dans le dossier que vous utiliserez comme répertoire de travail pour R et où vous sauvegarderez vos scripts R. Notez que le tutoriel utilise cette structure pour lire ou sauvegarder les données.
 
 ### Notes sur la base de données et son pedigree
