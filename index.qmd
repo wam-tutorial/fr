@@ -1,0 +1,98 @@
+# Preface {.unnumbered}
+
+Ce livre est une collection de tutoriels tirés de l'excellent article de @wilson2010.
+Les tutoriels ont été mis à jour pour fonctionner avec les dernières versions des logiciels, complétés par des informations supplémentaires et d'autres logiciels ont été ajoutés. Eric Postma a aimablement fourni une version mise à jour du tutoriel original d'asreml-r de asreml-r v3 à asreml-r v4.
+
+**Il s'agit d'un document évolutif et les informations sont régulièrement mises à jour/ajoutées**
+
+## Citer le livre {.unnumbered}
+
+Julien Martin & Mathieu Videlier ({{< meta year >}}). Comment ajuster un modèle animal ? Un guide pour les écologistes évolutionnistes utilisant plusieurs packages R. Version : {{< meta version >}} ({{< meta date >}}). <https://doi.org/10.5281/zenodo.10891227>
+
+## Licence {.unnumbered}
+
+Nous fournissons ce livre sous la licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+![](images/license_cc.png){fig-align="center"}
+
+N'hésitez pas à utiliser tout ou partie du contenu de ce livre.
+La seule chose que nous vous demandons est de citer la source originale et les auteurs conformément à la licence et d'utiliser la même licence si vous partagez ce travail publiquement.
+Si vous trouvez ce livre utile ou si vous avez des commentaires ou des suggestions, nous serions ravis de les recevoir ([contact info](#sec-who)).
+
+## Images {.unnumbered}
+
+L'image de couverture a été générée par Julien Martin à l'aide du générateur d'images Nightcafe AI en utilisant l'appel "Family tree of legendary beast".
+
+{{< pagebreak >}}
+
+## Wui sommes-nous ? {.unnumbered #sec-who}
+
+```{r}
+#| label: crop-julien
+#| echo: false
+#| eval: false
+
+crop_fn <- function(author, overwrite = FALSE){
+  if (!file.exists(paste0("images/author/", author, "_circ.jpg"))|overwrite == TRUE) {
+    if(file.exists(paste0("images/author/", author, ".jpg"))){
+      cropcircles::crop_circle(
+        paste0("images/author/", author, ".jpg"),
+        to = paste0("images/author/", author, "_circ.jpg")
+      )
+    } else {
+      file.copy("images/author/default_circ.jpg", paste0("images/author/", author, "_circ.jpg"))
+    }
+      cat("generated cropped circle image for", author, "as file:", paste0("/images/author/", author, "_circ.jpg"))
+  } else {
+ cat("nothing happened", paste0("/images/author/", author, "_circ.jpg"), "already exist")
+  }
+}
+
+```
+
+::: {layout="[25, -5, 70]" }
+![](images/author/julien_circ.jpg){fig-align="center" width=100%}
+
+:::: {#sec-julien}
+**Julien Martin** est professeur à l'Université d'Ottawa et travaille sur l'écologie évolutive. Il a découvert R avec la version 1.8.1 et enseigne R depuis la version 2.4.0. Il a développé la première version du livre en février 2021 et continue maintenant à développer le livre et à maintenir le site pour toutes les langues (actuellement seulement l'anglais mais le français et l'espagnol seront bientôt disponibles).
+
+
+<!--::::: {.content-visible when-format="pdf"}
+- {{< fa bookmark >}}: uOttawa <https://www.uottawa.ca/faculty-science/professors/julien-martin/>, lab page <https://juliengamartin.github.io>
+- {{< fa brands twitter >}}: <https://twitter.com/jgamartin>
+- {{< fa brands github >}}: <https://github.com/juliengamartin>
+:::::-->
+
+<!-- ::::: {.content-visible when-format="html"} -->
+- {{< fa bookmark >}}: [uOttawa page](https://www.uottawa.ca/faculty-science/professors/julien-martin/), [lab page](https://juliengamartin.github.io)
+- {{< fa brands twitter >}}: [jgamartin](https://twitter.com/jgamartin)
+- {{< fa brands github >}}: [juliengamartin](https://github.com/juliengamartin)
+\newline
+<!-- ::::: -->
+
+::::
+
+![](images/author/mathieu_circ.jpg){fig-align="center" width=100%}
+
+:::: {#sec-mathieu}
+**Mathieu Videlier** est actuellement chercheur postdoctoral et collabore avec le [Pr. Jacqueline Sztepanacz](https://sztepanacz.eeb.utoronto.ca) à l'Université de Toronto.
+Il a rejoint le projet en mai 2021. Il a ajouté et continue d'ajouter des détails au document. Il s'occupe également de la traduction en français et en espagnol.
+
+
+- {{< fa bookmark >}}: [personal page](https://videliermath.weebly.com/)
+- {{< fa brands twitter >}}: [BioBipbip](https://twitter.com/BioBipbip)
+- {{< fa brands github >}}: [MathieuVID ](https://github.com/MathieuVID )
+\newline
+
+::::
+
+:::
+
+
+## Collant Hex {.unnumbered}
+
+![](images/cover/book_wam_hex.png){fig-align="center" width=50%}
+
+
+::: {.content-visible when-format="pdf"}
+\clearpage\pagenumbering{arabic}\setcounter{page}{1}
+:::

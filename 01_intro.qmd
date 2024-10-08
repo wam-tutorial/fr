@@ -1,0 +1,49 @@
+# Introduction {#intro}
+Ce livre fournit une série de tutoriels (avec les fichiers de données) pour produire un modèle animal dans `R` à l'aide de différents paquets/modules (`ASReml-R`, `gremlin`, `MCMCglmm` et `brms`/`stan`).
+
+Vous devrez suivre attentivement les instructions ci-dessous pour télécharger les fichiers de données et installer les modules R.
+
+Avant de commencer le tutoriel, nous supposons que le lecteur a installé avec succès le programme R ainsi que les modules R de son choix sur son ordinateur et qu'il a sauvegardé les fichiers de données requis dans le répertoire approprié à partir duquel ils seront lus/utilisés.
+
+Des instructions complètes sur la manière de procéder sont fournies avec les distributions de logiciels. 
+Pour travailler avec les différents tutoriels, nous vous recommandons de créer un dossier dans lequel vous enregistrerez vos différents scripts `R` pour les tutoriels. De plus, le tutoriel est là pour aider les chercheurs dans leurs codes et leur compréhension des modèles et des résultats, mais il est nécessaire que vous lisiez et compreniez la littérature sur la génétique quantitative et le modèle animal. 
+
+## Base de données
+### Fichiers de la base de données
+Vous aurez besoin de télécharger 3 fichiers de données pour le tutoriel dans `R` :
+
+- gryphon.csv : données sur le poids à la naissance et la morphologie du griffon
+- gryphonRM.csv : données sur la mesure répétée de la date de ponte du griffon.
+- gryphonped.csv : données sur le pedigree associé à la base de données griffon. 
+
+De plus, certains des modèles présentés dans les tutoriels peuvent prendre un certain temps à s'exécuter (parfois > 1 heure), c'est pourquoi nous fournissons également les sorties des modèles pour vous permettre de poursuivre le tutoriel sans attendre que le modèle s'exécute. (Mais vous êtes libre d'exécuter les modèles, et nous l’encourageons pour votre propre apprentissage).
+Les fichiers sont disponibles [ici](https://github.com/JulienGAMartin/wam_tuto/tree/master/data)
+Je recommande de sauvegarder les fichiers data et Rdata dans un sous-dossier `data` dans le dossier que vous utiliserez comme répertoire de travail pour R et où vous sauvegarderez vos scripts R. Notez que le tutoriel utilise cette structure pour lire ou sauvegarder les données.
+
+### Notes sur la base de données et son pedigree
+Il est toujours important de prendre le temps de réfléchir attentivement aux points forts et aux limites potentielles de votre pedigree (ou vos informations généalogiques) avant de vous lancer dans des analyses de génétique quantitative. Pedigree Viewer, écrit par Brian Kinghorn, est une application extrêmement utile pour visualiser les pedigrees, et peut être téléchargé à partir de : <http://www-personal.une.edu.au/~bkinghor/pedigree.htm>. `pedtricks`, un module R écrit par @pedtricks et disponible sur [CRAN](http://cran.r-project.org/) peut également être utilisé à cette fin et offre quelques fonctionnalités supplémentaires intéressantes pour visualiser les structures des pedigrees et générer les statistiques associées. Avant de commencer à parcourir les tutoriels, nous vous conseillons de prendre un moment pour regarder les fichiers de pedigree fournis avec eux en utilisant Pedigree Viewer ou pedtricks.
+
+## R
+Vous devez vérifier que vous disposez de la version la plus récente de R et des modules R. Vous pouvez vérifier le numéro de la version actuelle sur le CRAN. Vous pouvez vérifier le numéro de la version actuelle sur le CRAN. Si vous avez besoin de mettre à jour (ou d'installer) des modules R, utilisez `install.packages()` et suivez les instructions qui vous sont données.
+
+### Modules R
+#### asreml-r
+ASReml-R est un logiciel commercial édité par VSN international (<http://www.vsni.co.uk/software/asreml/>). Ce logiciel n'est pas gratuit et nécessite une clé d'accès.
+Des informations supplémentaires et un guide peuvent être trouvés dans le [manuel d'Asreml-R](https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf)
+
+#### gremlin
+‘gremlin` est un petit monstre qui apparaît si vous nourrissez un mugwai après minuit. C'est aussi un logiciel génial et prometteur écrit par Matthew Wolak pour exécuter des modèles mixtes en utilisant une approche fréquentiste.
+
+#### MCMCglmm
+`MCMCglmm` est un module R pour l'analyse des modèles mixtes bayésiens écrit par Jarrod Hadfield. Il s'agit d'un logiciel gratuit distribué par le biais du CRAN (<http://cran.r-project.org/>). Des informations et des guides sur ce module peuvent être trouvés dans son manuel de l'utilisateur et ses vignettes (<http://cran.r-project.org/web/packages/MCMCglmm/index.html>).
+Référence : [@MCMCglmm].
+Cette partie fournit des informations qui s'appliquent aux analyses basées sur MCMCglmm en général, mais qui ne seront pas incluses dans d'autres tutoriels. Plus important encore, il fournit   certaines méthodes les plus simples pour déterminer la performance d'une analyse utilisant MCMCglmm, c'est-à-dire la vérification de la validité de la distribution postérieur.
+Ce tutoriel ne remplace pas des notes de cours sur le MCMCglmm, disponibles sur le CRAN (Comprehensive R ArchiveNetwork, <http://cran.r-project.org/>, ou accessibles dans R à l'aide de la commande vignette ("CourseNotes", "MCMCglmm")).
+Ce tutoriel ne présente pas l'un des principaux avantages de l'utilisation de MCMCglmm pour l'analyse de données provenant de populations naturelles, à savoir la possibilité de modéliser correctement des réponses non normales. Ces capacités sont présentées dans la documentation distribuée avec MCMCglmm et disponible sur le CRAN.
+Un autre guide du modèle animal spécifique pour MCMCglmm peut être trouvé [ici](https://devillemereuil.legtux.org/wp-content/uploads/2021/09/tuto_en.pdf). Pr. Pierre de Villemereuil fournit plus d'informations sur le concept bayésien et se concentre davantage sur les variables non gaussiennes.
+
+#### brms
+
+`brms` fournit une interface pour exécuter des modèles généralisés bayésiens multivariés (non) linéaires à plusieurs niveaux en utilisant `Stan`, qui est un module C++ pour obtenir une inférence bayésienne complète (voir <https://mc-stan.org/>).
+La syntaxe des formules est une version étendue de la syntaxe appliquée du module 'lme4' pour fournir une interface familière et simple pour effectuer des analyses de régression.
+Il faut noter que si `brms` est capable d’exécuter un modèle animal, la paramétrisation utilisée n'est pas la plus efficace et peut prendre plus de temps que l'utilisation d'une paramétrisation différente directement dans `stan`.
