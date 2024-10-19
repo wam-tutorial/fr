@@ -30,6 +30,8 @@ Vous devez vérifier que vous disposez de la version la plus récente de R et de
 #### asreml-r
 ASReml-R est un logiciel commercial édité par VSN international (<http://www.vsni.co.uk/software/asreml/>). Ce logiciel n'est pas gratuit et nécessite une clé d'accès.
 Des informations supplémentaires et un guide peuvent être trouvés dans le [manuel d'Asreml-R](https://asreml.kb.vsni.co.uk/wp-content/uploads/sites/3/2018/02/ASReml-R-Reference-Manual-4.pdf)
+VSNI a pffert une licence gratuite pour 12 mois pour soutenir le développement de ce guide. De plus, VSNI propose un blog contenant des guides et des avis sur l'analyse des données (https://vsni.co.uk/blogs/) ainsi que des cours privés.
+
 
 #### gremlin
 ‘gremlin` est un petit monstre qui apparaît si vous nourrissez un mugwai après minuit. C'est aussi un logiciel génial et prometteur écrit par Matthew Wolak pour exécuter des modèles mixtes en utilisant une approche fréquentiste.
